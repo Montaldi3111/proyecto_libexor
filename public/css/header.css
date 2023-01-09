@@ -62,3 +62,18 @@ header .nav-bar .categories ul{
 header .nav-bar .categories ul li{
     margin: auto;
 }
+
+
+/* Transitions */
+
+header .nav-bar .head a:hover{
+    text-shadow: 0 0 15px white;
+}
+
+header .nav-bar .head span i:hover{
+    color: red;
+}
+
+header .nav-bar .categories li:hover{
+    color: #404040;
+}

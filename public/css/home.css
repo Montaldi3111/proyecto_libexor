@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    font-family: 'Inter Tight', sans-serif;
+    background-color: #F2F2F2;
+    position: relative;
+}
+
+main h1{
+    padding: 20px 0 0 0;
+    text-align: center;
+}
+
+main .product-carousel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px 0 40px 0;
+}
+
+main .product-carousel span{
+    padding: 10px;
+    margin: 62px 10px;
+    background-color: #8AA6BF;
+}
+
+main .product-carousel i{
+    font-size: 40px;
+    color: white;
+}
+
+main .product-carousel article{
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+main .product-carousel picture{
+    margin: 0 2em 0 0;
+    height: 180px;
+}
+
+main .product-carousel img{
+    width: 10em;
+    height: 180px;
+}
+
+main .product-carousel ul{
+    margin: 2em 8em 0 0;
+    list-style: none;
+}
+
+main .product-list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+main .product-list .product{
+    text-align: center;
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px #404040;
+    margin: 10px 10px 40px 10px;
+}
+
+
+main .product-list ul{
+    list-style: none;
+    background-color: white;
+}
+
+main .product-list .product .image{
+    margin: auto;
+    width: 10em;
+    height: 10em;
+}
+
+main .product-list .product .image img{
+    text-align: center;
+    width: 10em;
+    height: 10em;
+}
+
+main .product-list .product ul{
+    text-align: left;
+}
+
+/* Transitions */
+main .product-carousel span:hover{
+    background-color: rgba(138, 166, 191, 0.562);
+}
+
+main .product-carousel .product-info:hover{
+    box-shadow: 0 0 10px 0px #404040;
+}
+
+main .product-list .product:hover{
+    box-shadow: 0 0 60px 0px rgb(0, 0, 0);
+}
