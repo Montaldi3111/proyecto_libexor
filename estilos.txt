@@ -1,0 +1,5 @@
+Colores: #BF1744, #8AA6BF, #F2F2F2, #404040, #0D0D0D
+
+Fuente: Inter Thight
+
+Fuente logo: Shrikhand, Arapey, Sanchez

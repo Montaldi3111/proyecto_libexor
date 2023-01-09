@@ -1,0 +1,46 @@
+footer{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #BF1744;
+    color: white;
+    font-family: 'Inter Thight', sans-serif;
+}
+
+footer .footer-container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+
+footer .footer-container .first p{
+    font-family: 'Shrikhand', cursive;
+    font-size: 40px;
+    letter-spacing: .5px;
+}
+
+footer .footer-container .first .social-icons{
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+}
+
+footer .footer-container .second ul{
+    padding: 0;
+    list-style: none;
+}
+
+footer .footer-container .second li{
+    margin: 10px 0;
+}
+
+footer .footer-container .third ul{
+    padding: 0 10px 0 0;
+    list-style: none;
+}
+
+footer .footer-container .third li{
+    margin: 10px 0;
+}

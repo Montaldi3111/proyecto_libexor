@@ -1,0 +1,64 @@
+header{
+    font-family: 'Inter Tight', sans-serif;
+    color:white;
+}
+
+header .nav-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+header .nav-bar .head{
+    background-color: #0D0D0D;
+    padding: 3px;
+}
+
+header .nav-bar .head ul{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+header .nav-bar .head ul .title{
+    font-family: 'Shrikhand', cursive;
+    letter-spacing: .5px;
+    font-size: 20px;
+    
+}
+
+header .nav-bar .head ul li{
+    margin: auto;
+
+}
+
+header .nav-bar .head ul p{
+    margin: 0;
+}
+
+header .nav-bar .head ul input{
+    border: none;
+    border-radius: 30px;
+    width: 300px;
+    padding: 6px;
+}
+
+header .nav-bar .categories{
+    background-color: #8AA6BF;
+}
+
+header .nav-bar .categories ul{
+    margin: 0;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    text-align: center;
+}
+
+header .nav-bar .categories ul li{
+    margin: auto;
+}
