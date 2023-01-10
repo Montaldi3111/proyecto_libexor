@@ -4,6 +4,12 @@ const controller = {
             title: ["Acceder"],
             styles: ["/login-register"]
         })
+    },
+    profile: (req,res) => {
+        res.render("users/profile",{
+            title: ["Perfil"],
+            styles: ["/profile"]
+        })
     }
 
 }

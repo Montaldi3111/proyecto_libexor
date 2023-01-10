@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    background-color: #F2F2F2;
+    font-family: 'Inter Tight', sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+
+main .product-list{
+    display: flex;
+    flex-direction: column;
+}
+
+main .product-list .product{
+    background-color: white;
+    margin: 1em 0;
+    width: 30em;
+    border: 2px solid #404040;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+}
+
+main .product-list ul{
+    list-style: none;
+    margin: 0 0 0 3em;
+}
+
+main .product-list ul li{
+    margin: 10px;
+}
+
+main .product-list .product img{
+    border: 1px solid #404040;
+    border-radius: 10px;
+    width: 10em;
+    height: 10em;
+}
+
+main .product-list .product .buttons{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .product-list .product button{
+    background-color: white;
+    border: none;
+    font-size: 25px;
+}
+
+main .product-list .product a i{
+    color: black;
+    position: relative;
+    top: 3.2px;
+    font-size: 20px;
+    margin-left: 1em;
+}
+
+main .checkout{
+    height: fit-content;
+    text-align: center;
+    margin:3em 0 0 0;
+    border-radius: 20px;
+    border: 2px solid #404040;
+    padding: 1em;
+}
+
+main .checkout .prices{
+    margin-bottom: 10px;
+    font-size: 20px;
+    letter-spacing: .5px;
+}
+
+main .checkout .total{
+    margin-top: 1em;
+    border-top: 2px solid #404040;
+}
+
+main .checkout .total h3{
+    font-size: 25px;
+    letter-spacing: .5px;
+}
+
+main .checkout button{
+    width: 100px;
+    border-radius: 20px;
+    margin-top: 1em;
+    border: none;
+    padding: 5px;
+    letter-spacing: .5px;
+    color: white;
+    font-size: 18px;
+    background-color: #404040;
+}
+
+/* Transitions */
+
+main .product-list .product:hover{
+    border: 2px solid #BF1744;
+}
+
+main .product-list .product button:hover{
+    color: #BF1744;
+}
+
+main .product-list .product a i:hover{
+    color: #8AA6BF;
+}
+
+main .checkout button:hover{
+    background-color: #404040cb;
+}

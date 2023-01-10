@@ -1,0 +1,63 @@
+<%- include("../partials/head")  %>
+<%- include("../partials/header")  %>
+<main>
+    <section class="product-list">
+        <div class="product">
+            <picture>
+            <img src="/images/iphone-11.jpg" alt="">
+        </picture>
+        <ul>
+            <li>Iphone 11 Apple</li>
+            <li>Precio: 56.999$</li>
+            <li>Cantidad: 1</li>
+            <li class="buttons"><form action="/erase" method="post">
+                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+            </form>
+            <a href="/product/edit"><i class="fa-solid fa-pen-to-square"></i></a></li>
+        </ul>
+        </div>
+        <div class="product">
+            <picture>
+            <img src="/images/iphone-12.jpg" alt="">
+        </picture>
+        <ul>
+            <li>Iphone 12 Apple</li>
+            <li>Precio: 66.999$</li>
+            <li>Cantidad: 1</li>
+            <li class="buttons"><form action="/erase" method="post">
+                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+            </form>
+            <a href="/product/edit"><i class="fa-solid fa-pen-to-square"></i></a></li>
+        </ul>
+        </div>
+        <div class="product">
+            <picture>
+            <img src="/images/auriculares-inalambricosAiwa.jpg" alt="">
+        </picture>
+        <ul>
+            <li>Auriculares inalambricos Aiwa</li>
+            <li>Precio: 12.999$</li>
+            <li>Cantidad: 1</li>
+            <li class="buttons"><form action="/erase" method="post">
+                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+            </form>
+            <a href="/product/edit"><i class="fa-solid fa-pen-to-square"></i></a></li>
+        </ul>
+        </div>
+    </section>
+    <section class="checkout">
+        <div class="prices">
+            <p>Lista:</p>
+            <p>56.999$</p>
+            <p>66.999$</p>
+            <p>12.999$</p>
+        </div>
+        <div class="total">
+            <h3>Total: 136997$</h3>
+            <form action="/pay" method="post">
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+    </section>
+</main>
+<%- include("../partials/footer")  %> 

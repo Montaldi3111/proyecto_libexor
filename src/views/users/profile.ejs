@@ -1,0 +1,23 @@
+<%- include("../partials/head") %> 
+<%- include("../partials/header") %>
+<main>
+    <section class="profile-picture">
+        <picture>
+            <img src="/images/profile-icon.jpg">
+        </picture>
+        <a href="/profile/edit" style="color: black;"><i class="fa-solid fa-pen-to-square"></i> Editar imagen de perfil</a>
+    </section>
+    <section class="profile-details">
+        <ul>
+            <li>Nombre de usuario: GemKnight98</li>
+            <li>Email: gem.knight.ygo@gmail.com</li>
+            <li>Fecha de nacimiento: 09/09/1998</li>
+            <li>Estado: Admin</li>
+            <li><form action="/logout" method="post">
+                <button type="submit">Desloguearse</button>
+            </form>
+        </li>
+        </ul>
+    </section>
+</main>
+<%- include("../partials/footer") %>

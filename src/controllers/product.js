@@ -4,6 +4,12 @@ const controller = {
             styles: ["/detail"],
             title: ["Detalles"]
         })
+    },
+    cart: (req,res) => {
+        res.render("products/cart", {
+            styles: ["/cart"],
+            title:["Carro"]
+        })
     }
 }
 
