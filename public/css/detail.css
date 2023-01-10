@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Inter Tight', sans-serif;
+    position: relative;
+}
+
+main .images{
+    text-align: center;
+    margin: 5em 3em 4em 10em;
+}
+
+
+main .images .big-picture img{
+    border: 1px solid #404040;
+    border-radius: 300px;
+    width: 20em;
+    height: 20em;
+    margin-bottom: 6em;
+}
+
+main .images div {
+    width: fit-content;
+}
+
+main .images div i{
+    position: relative;
+    top: -1.4em;
+    font-size: 28px;
+    padding: 5px;
+    background-color: #8AA6BF;
+    color: white;
+}
+
+main .images .carousel img{
+    width: 5em;
+    height: 5em;
+    margin: 10px;
+    border: 1px solid #404040;
+}
+
+main .product-form{
+    width: 300px;
+    margin: 4em 15em 0 0;
+    font-size: 20px;
+}
+
+main .product-form form fieldset {
+    border: none;
+    margin-top: 2em;
+}
+
+main .product-form form .product-name{
+    font-weight: bold;
+}
+
+main .product-form form .quantity{
+    width: 30px;
+    position: relative;
+    top: -3px;
+}
+
+main .product-form button{
+    width: 250px;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 22px;
+    letter-spacing: .5px;
+    font-weight: bold;
+    background-color: #404040;
+    border-radius: 30px;
+}
+
+/* Transitions */
+
+main .images i:hover{
+    background-color: #8aa6bfc2;
+}
+
+main .images .carousel img:hover{
+    box-shadow: 0 0 20px 0 #40404088;
+}
+
+main form button:hover{
+    background-color: #404040cb;
+}

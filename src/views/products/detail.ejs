@@ -1,0 +1,41 @@
+<%- include("../partials/head") %>
+<%- include("../partials/header") %>
+<main>
+<section class="images">
+    <picture class="big-picture">
+        <img src="/images/auriculares-earpods.jpg" alt="">
+    </picture>
+    <div>
+        <i class="fa-solid fa-chevron-left"></i>
+        <picture class="carousel">
+            <img src="/images/auriculares-earpods.jpg" alt="">
+            <img src="/images/auriculares-earpods.jpg" alt="">
+            <img src="/images/auriculares-earpods.jpg" alt="">
+        </picture>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+</section>
+<section class="product-form">
+<form action="product/add" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="name" class="product-name">Auriculares EarPods Apple</label>
+        <input type="hidden" name="name">
+    </fieldset>
+    <fieldset>
+        <label for="price">Precio: 16.999$</label>
+        <input type="hidden" name="price">
+    </fieldset>
+    <fieldset>
+        <label for="quantity">Cantidad:</label>
+        <input type="number" name="quantity" value="1" class="quantity">
+    </fieldset>
+    <fieldset>
+        <label for="">Descripcion: auriculares earpods</label>
+    </fieldset>
+    <fieldset>
+    <button type="submit">Agregar al carrito</button>
+</fieldset>
+</form>
+</section>
+</main>
+<%- include("../partials/footer") %> 

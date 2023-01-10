@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background-color: #F2F2F2;
+    font-family: 'Inter Thight', sans-serif;
+}
+
+main section{
+    width: 20em;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+main section h1{
+    margin: auto;
+    padding: 5px;
+    width: fit-content;
+}
+
+main form fieldset{
+    border: none;
+    margin: 10px;
+}
+
+main form label{
+    font-size: 20px;
+}
+
+main form input{
+    width: 300px;
+    margin: 5px;
+    border-radius: 15px;
+    border: 1px solid #8AA6BF;
+    padding: 5px;
+}
+
+main form .checkbox{
+    width: fit-content;
+    padding: 5px;
+}
+
+main .login-form button, main .register-form button{
+    border: none;
+    margin-top: 10px;
+    width: 150px;
+    color: white;
+    font-size: 19px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+    background-color: #404040;
+    padding: 8px;
+}
+
+/* Transitions */
+
+main h1:hover{
+    width: 170px;
+    border-radius: 30px;
+    color: white;
+    background-color: #BF1744;
+}
+
+main form button:hover{
+    background-color: rgba(64, 64, 64, 0.795);
+}
+
+main form .checkbox:hover{
+    box-shadow: 0 0 10px #404040;
+}

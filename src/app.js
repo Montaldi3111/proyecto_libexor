@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-//const userRoutes = require("./routes/user.js");
+const userRoutes = require("./routes/user");
 const mainRoutes = require("./routes/main");
+const productRoutes = require("./routes/product");
 
 // Set settings
  app.set("port", process.env.PORT || 3000);
@@ -19,3 +20,5 @@ app.use(express.static(path.resolve(__dirname, "../public")));
 // Routes
 
 app.use(mainRoutes);
+app.use(userRoutes);
+app.use(productRoutes);
