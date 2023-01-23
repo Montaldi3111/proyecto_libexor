@@ -22,7 +22,19 @@ module.exports = (Sequelize, dataTypes) => {
             notNULL: false,
             type: dataTypes.STRING
         },
+        quantity: {
+            notNULL: false,
+            type: dataTypes.INTEGER
+        },
         color_id: {
+            notNULL: false,
+            type: dataTypes.INTEGER
+        },
+        type_id: {
+            notNULL: false,
+            type: dataTypes.INTEGER
+        },
+        company_id: {
             notNULL: false,
             type: dataTypes.INTEGER
         },
@@ -34,5 +46,21 @@ module.exports = (Sequelize, dataTypes) => {
     }
 
     const Product = Sequelize.define(alias,cols,config);
+
+    Product.associate = (models) =>{
+        Product.belongsTo(models.Color, {
+            as: "color",
+            foreignKey: "color_id"
+        });
+        Product.belongsTo(models.Type, {
+            as: "type",
+            foreignKey: "type_id"
+        });
+        Product.belongsTo(models.Company, {
+            as: "company",
+            foreignKey: "company_id"
+        })
+    }
+
     return Product;
 }

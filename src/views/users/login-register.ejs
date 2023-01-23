@@ -3,7 +3,7 @@
 <main>
     <section class="login">
         <h1 class="login-title">Ingresar</h1>
-        <form action="/access" method="post" enctype="multipart/form-data" class="login-form">
+        <form action="/access" method="post" class="login-form">
             <fieldset>
                 <label for="username">Nombre de usuario</label><br>
                 <input type="text" name="username">
@@ -20,7 +20,7 @@
     </section>
     <section class="register">
         <h1>Registro</h1>
-        <form action="/create" method="post" enctype="multipart/form-data" class="register-form">
+        <form action="/create" method="post" class="register-form" >
             <fieldset>
                 <label for="username">Nombre de usuario</label><br>
                 <input type="text" name="username">
@@ -32,6 +32,10 @@
             <fieldset>
                 <label for="confirm-email">Confirmar email</label><br>
                 <input type="email" name="confirm-email">
+            </fieldset>
+            <fieldset>
+                <label for="file">Avatar</label><br>
+                <input type="file" name="file">
             </fieldset>
             <fieldset>
                 <label for="password">Contraseña</label><br>

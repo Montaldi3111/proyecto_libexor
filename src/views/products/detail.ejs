@@ -3,14 +3,14 @@
 <main>
 <section class="images">
     <picture class="big-picture">
-        <img src="/images/auriculares-earpods.jpg" alt="">
+        <img src="/images/<%=product.image %>" alt="">
     </picture>
     <div>
         <i class="fa-solid fa-chevron-left"></i>
         <picture class="carousel">
-            <img src="/images/auriculares-earpods.jpg" alt="">
-            <img src="/images/auriculares-earpods.jpg" alt="">
-            <img src="/images/auriculares-earpods.jpg" alt="">
+            <img src="/images/<%=product.image %>" alt="">
+            <img src="/images/<%=product.image %>" alt="">
+            <img src="/images/<%=product.image %>" alt="">
         </picture>
         <i class="fa-solid fa-chevron-right"></i>
     </div>
@@ -18,22 +18,29 @@
 <section class="product-form">
 <form action="product/add" method="post" enctype="multipart/form-data">
     <fieldset>
-        <label for="name" class="product-name">Auriculares EarPods Apple</label>
+        <label for="name" class="product-name"><%= product.name %></label>
         <input type="hidden" name="name">
     </fieldset>
     <fieldset>
-        <label for="price">Precio: 16.999$</label>
+        <label for="price">Precio: <%=product.price %>$</label>
         <input type="hidden" name="price">
     </fieldset>
     <fieldset>
         <label for="quantity">Cantidad:</label>
-        <input type="number" name="quantity" value="1" class="quantity">
+        <% if (product.quantity > 0) { %>
+            <input type="number" name="quantity" value="1" class="quantity">
+        <% } else {%>
+            <p>No Disponible</p>
+        <% } %>
+        
     </fieldset>
     <fieldset>
-        <label for="">Descripcion: auriculares earpods</label>
+        <label for="">Descripcion: <%=product.description %></label>
     </fieldset>
     <fieldset>
-    <button type="submit">Agregar al carrito</button>
+        <% if (product.quantity > 0) { %>
+            <button type="submit">Agregar al carrito</button>
+        <% } %>
 </fieldset>
 </form>
 </section>

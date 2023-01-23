@@ -6,7 +6,7 @@ module.exports = (Sequelize, dataTypes) => {
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
-        name:{
+        color:{
             notNULL: false,
             type: dataTypes.STRING,
     }
@@ -18,5 +18,13 @@ module.exports = (Sequelize, dataTypes) => {
     }
 
     const Color = Sequelize.define(alias,cols,config);
+
+    Color.associate = (models) => {
+        Color.hasMany(models.Product, {
+            as: "products",
+            foreignKey: "color_id"
+        })
+    }
+
     return Color;
 }

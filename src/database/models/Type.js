@@ -6,7 +6,7 @@ module.exports = (Sequelize, dataTypes) => {
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
-        name:{
+        type:{
             notNULL: false,
             type: dataTypes.STRING,
     }
@@ -18,5 +18,13 @@ module.exports = (Sequelize, dataTypes) => {
     }
 
     const Type = Sequelize.define(alias,cols,config);
+
+    Type.associate = (models) => {
+        Type.hasMany(models.Product, {
+            as: "products",
+            foreignKey: "type_id"
+        })
+    }
+
     return Type;
 }
