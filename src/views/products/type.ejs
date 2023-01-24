@@ -1,0 +1,41 @@
+<%-include ("../partials/head.ejs") %>
+<%-include ("../partials/header.ejs") %>
+<main>
+    <% if (product.length == 0) { %>
+        <h1 class="error">No hay productos para esa categoria</h1>
+    <% }  else { %>
+        <h1>Lista de productos</h1><br>
+        <section class="list">
+        <% for( i=0;i<product.length; i++ ) { %>
+            <div class="product">
+                <% if (product[i].quantity == 0) { %>
+                    <ul>
+                        <li><img src="/images/<%=product[i].image %>"></li>
+                        <li><%=product[i].name %></li>
+                        <li><%=product[i].price %>$</li>
+                        <% if (product[i].quantity >0) { %>
+                            <li style="color: green;">Disponible</li>
+                        <% }  else {%>
+                            <li style="color: red;">No Disponible</li>
+                            <% } %>
+                    </ul>
+                <% } else {%>
+                <a href="/product/<%=product[i].id %>" style="text-decoration:none; color: black;">
+                <ul>
+                    <li><img src="/images/<%=product[i].image %>"></li>
+                    <li><%=product[i].name %></li>
+                    <li><%=product[i].price %>$</li>
+                    <% if (product[i].quantity >0) { %>
+                        <li style="color: green;">Disponible</li>
+                    <% }  else {%>
+                        <li style="color: red;">No Disponible</li>
+                        <% } %>
+                </ul>
+            </a>
+            <% } %>
+            </div>
+        <% } %>
+    </section>
+    <% } %>
+</main>
+<%-include ("../partials/footer.ejs") %>

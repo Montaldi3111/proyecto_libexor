@@ -8,12 +8,21 @@ const controller = {
                     id: req.params.id
                 }
             }).then(product => {
-                res.render("products/detail", {
-                styles: ["/detail"],
-                title: ["Detalles"],
-                product,
-                types
-                })
+                if(!product){
+                    res.render("error", {
+                        styles: ["/error"],
+                        title: ["Error"],
+                        types
+                    })
+                } else {
+                    res.render("products/detail", {
+                        styles: ["/detail"],
+                        title: ["Detalles"],
+                        product,
+                        types
+                        })
+                }
+                
             })
         })
         
@@ -27,6 +36,25 @@ const controller = {
             })
         })
     },
+
+    type: (req,res) => {
+        db.Type.findAll().then(types => {
+            db.Product.findAll({
+                where: {
+                    type_id: req.params.id
+                }
+              }).then(product => {
+                    res.render("products/type", {
+                        title: ["Lista de productos"],
+                        styles: ["/type"],
+                        types,
+                        product
+                    })
+              })
+        })
+        
+    },
+
     edit: (req,res) => {
         db.Color.findAll().then(colors => {
             db.Company.findAll().then(companys => {
@@ -54,6 +82,22 @@ const controller = {
             })
         })
     },
+
+    add: (req,res) => {
+        db.Type.findAll().then(types => {
+            db.Company.findAll().then(brands => {
+                db.Color.findAll().then(colors => {
+                    res.render("products/create", {
+                        styles: ["/create"],
+                        title: ["Crear Producto"],
+                        types,
+                        colors,
+                        companys: brands
+                    })
+                })
+            })
+        })
+    },
     //CRUD
     create: (req,res) => {
         db.Product.create({
@@ -70,23 +114,22 @@ const controller = {
         })
     },
     update: (req,res) => {
-        res.send(req.body)
-        // db.Product.update({
-        //     name: req.body.name,
-        //     // image: req.files[0].filename,
-        //     price: req.body.price,
-        //     description: req.body.description,
-        //     quantity: req.body.quantity,
-        //     color_id: req.body.color_id,
-        //     type_id: req.body.type_id,
-        //     company_id: req.body.company_id
-        // },{
-        //     where: {
-        //         id: req.params.id
-        //     }
-        // }).then(()=>(
-        //     res.redirect("/product/" + req.params.id)
-        // ))
+        db.Product.update({
+            name: req.body.name,
+            // image: req.files[0].filename,
+            price: req.body.price,
+            description: req.body.description,
+            quantity: req.body.quantity,
+            color_id: req.body.color_id,
+            type_id: req.body.type_id,
+            company_id: req.body.company_id
+        },{
+            where: {
+                id: req.params.id
+            }
+        }).then(()=>(
+            res.redirect("/product/" + req.params.id)
+        ))
     },
     delete: (req,res) => {
         db.Product.destroy({

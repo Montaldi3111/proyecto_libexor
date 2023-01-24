@@ -1,9 +1,9 @@
 <%-include("../partials/head.ejs") %>
 <main>
-    <form action="/update/<%=product.id %>" method="post">
+    <form action="/product/create" method="post">
         <fieldset>
             <label for="name">Nombre: </label>
-            <input type="text" name="name" placeholder="<%=product.name %>">
+            <input type="text" name="name">
         </fieldset>
         <fieldset>
             <label for="image">Imagen: </label>
@@ -11,15 +11,15 @@
         </fieldset>
         <fieldset>
             <label for="price">Precio: </label>
-            <input type="number" name="price" placeholder="<%=product.price %>" min="0">
+            <input type="number" name="price" min="1">
         </fieldset>
         <fieldset>
             <label for="description">Descripcion:</label><br>
-            <textarea name="description" cols="30" rows="15" placeholder="<%=product.description %>" style="min-width: 300px;min-height: 100px;max-width: 600px; max-height: 200px;border-radius:0px;"></textarea>
+            <textarea name="description" cols="30" rows="15" style="min-width: 300px;min-height: 100px;max-width: 600px; max-height: 200px;border-radius:0px;"></textarea>
         </fieldset>
         <fieldset>
             <label for="quantity">Cantidad: </label>
-            <input type="number" name="quantity" placeholder="<%=product.quantity %>" min="0">
+            <input type="number" name="quantity" min="1">
         </fieldset>
         <fieldset>
             <label for="color">Color: </label>
@@ -45,7 +45,7 @@
                     <% } %>
                 </select>
         </fieldset>
-        <button type="submit">Editar Producto</button>
+        <button type="submit">Crear Producto</button>
     </form>
 </main>
 </body>

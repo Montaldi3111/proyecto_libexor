@@ -28,14 +28,14 @@
     <fieldset>
         <label for="quantity">Cantidad:</label>
         <% if (product.quantity > 0) { %>
-            <input type="number" name="quantity" value="1" class="quantity">
+            <input type="number" min="1" max="<%=product.quantity %>" name="quantity" value="1" class="quantity">
         <% } else {%>
             <p>No Disponible</p>
         <% } %>
         
     </fieldset>
     <fieldset>
-        <label for="">Descripcion: <%=product.description %></label>
+        <label class="description"><%=product.description %></label>
     </fieldset>
     <fieldset>
         <% if (product.quantity > 0) { %>

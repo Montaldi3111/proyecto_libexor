@@ -30,14 +30,10 @@
         <div class="categories">
             <ul>
                 <% for( i = 0; i < types.length; i++ ) { %>
-                    <li><%=types[i].type %></li>
+                    <li>
+                        <a href="/type/<%=types[i].id %>" style="text-decoration: none;"><%=types[i].type %></a>
+                    </li>
                 <% } %>
-                <!-- <li>Celulares</li>
-                <li>Auriculares</li>
-                <li>Notebooks</li>
-                <li>Televisores</li>
-                <li>Tablets</li>
-                <li>PCs</li> -->
             </ul>
         </div>
     </nav>

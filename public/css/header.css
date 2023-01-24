@@ -63,6 +63,10 @@ header .nav-bar .categories ul li{
     margin: auto;
 }
 
+header .nav-bar  .categories ul a {
+    color: white;
+}
+
 
 /* Transitions */
 
@@ -71,9 +75,9 @@ header .nav-bar .head a:hover{
 }
 
 header .nav-bar .head span i:hover{
-    color: red;
+    text-shadow: 0 0 15px white;
 }
 
-header .nav-bar .categories li:hover{
-    color: #404040;
+header .nav-bar .categories a:hover{
+    color: black;
 }

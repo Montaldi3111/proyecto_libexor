@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    font-family: 'Inter Tight', sans-serif;
+    background-color: #f2f2f2;
+    font-size: 18px;
+}
+
+main form fieldset {
+    border: none;
+    padding: 7px 0 9px 8em;
+}
+
+main form input, main form select, main form textarea{
+    padding: 8px;
+    border-radius: 15px;
+    border: 2px solid #8AA6BF;
+}
+
+main form button {
+    color: white;
+    margin-left: 8em;
+    padding: 8px;
+    font-size: 22px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: #0D0D0D;
+    letter-spacing: .5px;
+}
+
+/* Transistions */
+
+main form input:hover, main form textarea:hover, main form select:hover{
+    border: 2px solid #BF1744;
+}
+
+main form button:hover {
+    background-color: #2d2d2d;
+}
