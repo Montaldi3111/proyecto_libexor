@@ -32,29 +32,91 @@ const controller = {
                     isAdmin: String(req.body.email).includes("@lebixor.com"),
                     isActive: 1
             }).then(() =>{
-                res.send("Creado");
+                res.render("users/profile",{
+                    styles: ["/profile"],
+                    title: ["Perfil"]
+                    
+                });
             })
         } else {
-            res.send("Ya existe ese usuario");
+            res.render("users/login-register",{
+                styles: ["/login-register"],
+                title: ["Ingresar"],
+                error: {
+                    email: {
+                        msg: "Ese email ya se encuentra registrado"
+                    }
+                }
+            });
         }
         })
     },
     access: (req,res) => {
-        let exist = db.User.findOne({
-            where: {
-                username: req.body.username
-            }
-        }).then(user=> {
-            if(!user){
-                res.send
-            }
+        db.Type.findAll().then(types => {
+            db.User.findOne({
+                where: {
+                    username: req.body.username
+                }
+            }).then(user => {
+                if(!user){
+                    res.render("users/login-register",{
+                        styles: ["/login-register"],
+                        title: ["Ingresar"],
+                        error: {
+                            username: {
+                                msg: "No se encuentra un usuario con ese nombre"
+                            }
+                        },
+                        types
+                    });
+                } else if(!bcrypt.compareSync(req.body.password,user.password)){
+                    res.render("users/login-register",{
+                        styles: ["/login-register"],
+                        title: ["Ingresar"],
+                        error: {
+                            password: {
+                                msg: "Contraseña Incorrecta"
+                            }
+                        },
+                        types
+                    });
+                }
+                    else {
+                     if(req.body.remember){
+                        res.cookie('username', req.body.username, {maxAge: 1000*60*60*24});
+                        }
+                    req.session.user = user;
+                    res.render("users/profile", {
+                        styles: ["/profile"],
+                        title: ["Perfil"],
+                    });
+                }
+            })
         })
-        if(req.body.remember){
-        res.cookie('username', req.body.username, {maxAge: 1000*60*60*24});
-        }
-        // req.session.user = exist;
-        res.send("Logueado");
     },
+
+    update: (req,res) => {
+        db.User.update({
+            username: req.body.username,
+            email: String(req.body.email)
+        },{
+            where: {
+                id: req.params.id
+            }
+        }).then(() => {
+            res.redirect("/profile")
+        })
+    },
+
+    delete: (req,res) => {
+        db.User.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(() => {
+            res.redirect("/")
+        })
+    }
 
 }
 
