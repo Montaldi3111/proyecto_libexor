@@ -2,6 +2,13 @@
 <%- include("../partials/header.ejs") %>
 <main>
     <section class="login">
+        <% if (locals.error) { %>
+                <% if (locals.error.username) { %>
+                    <p style="color: red;"><%=locals.error.username.msg %></p>
+                <% } else if(locals.error.password) {%>
+                    <p style="color: red;"><%=locals.error.password.msg %></p>
+               <%  } %>
+        <% } %>
         <h1 class="login-title">Ingresar</h1>
         <form action="/access" method="post" class="login-form">
             <fieldset>
@@ -20,7 +27,12 @@
     </section>
     <section class="register">
         <h1>Registro</h1>
-        <form action="/create" method="post" class="register-form" >
+        <% if (locals.success) { %>
+                <p style="color:green"><%=locals.success.msg %></p>
+        <% }  else if(locals.error) {%>
+            <p style="color: red;"><%=locals.error.msg %></p>
+            <% } %>
+        <form action="/create" method="post" class="register-form" enctype="multipart/form-data">
             <fieldset>
                 <label for="username">Nombre de usuario</label><br>
                 <input type="text" name="username">

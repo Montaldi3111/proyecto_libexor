@@ -6,6 +6,7 @@ const path = require("path");
 const userRoutes = require("./routes/user");
 const mainRoutes = require("./routes/main");
 const productRoutes = require("./routes/product");
+const userIsLogged= require("./middlewares/userMiddleware");
 
 // Set settings
  app.set("port", process.env.PORT || 3000);
@@ -19,8 +20,10 @@ const productRoutes = require("./routes/product");
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "../public")));
+app.use(express.static(path.resolve(__dirname, "../public/images/uploads")));
 app.use(session({secret: "secret", saveUninitialized: true, resave: false}));
 app.use(cookie());
+app.use(userIsLogged);
 // Routes
 
 app.use(mainRoutes);

@@ -102,15 +102,17 @@ const controller = {
     create: (req,res) => {
         db.Product.create({
             name: req.body.name,
-            // image: req.files[0].filename,
+            image: req.files[0].filename,
             price: req.body.price,
             description: req.body.description,
             quantity: req.body.quantity,
-            color_id: req.body.color_id,
-            type_id: req.body.type_id,
-            company_id: req.body.company_id
+            color_id: req.body.color,
+            type_id: req.body.type,
+            company_id: req.body.company
         }).then((product) => {
-            res.redirect("products/" + product.id);
+            res.redirect("/product/" + product.id);
+        }).catch(err => {
+            res.send(err)
         })
     },
     update: (req,res) => {
@@ -120,9 +122,9 @@ const controller = {
             price: req.body.price,
             description: req.body.description,
             quantity: req.body.quantity,
-            color_id: req.body.color_id,
-            type_id: req.body.type_id,
-            company_id: req.body.company_id
+            color_id: req.body.color,
+            type_id: req.body.type,
+            company_id: req.body.company
         },{
             where: {
                 id: req.params.id

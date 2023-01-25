@@ -3,16 +3,19 @@
 <main>
     <section class="profile-picture">
         <picture>
-            <img src="/images/profile-icon.jpg">
+            <img src="/images/uploads/<%=user.avatar%>">
         </picture>
         <a href="/profile/edit" style="color: black;"><i class="fa-solid fa-pen-to-square"></i> Editar imagen de perfil</a>
     </section>
     <section class="profile-details">
         <ul>
-            <li>Nombre de usuario: GemKnight98</li>
-            <li>Email: gem.knight.ygo@gmail.com</li>
-            <li>Fecha de nacimiento: 09/09/1998</li>
-            <li>Estado: Admin</li>
+            <li>Nombre de usuario:<%=user.username %></li>
+            <li>Email: <%=user.email %></li>
+            <% if (user.isAdmin==1) { %>
+                <li>Estado: Admin</li>
+            <% } else {%>
+                <li>Estado: Usuario</li>
+                <% } %>
             <li><form action="/logout" method="post">
                 <button type="submit">Desloguearse</button>
             </form>

@@ -1,6 +1,6 @@
 <%-include("../partials/head.ejs") %>
 <main>
-    <form action="/product/create" method="post">
+    <form action="/product/create" method="post" enctype="multipart/form-data">
         <fieldset>
             <label for="name">Nombre: </label>
             <input type="text" name="name">

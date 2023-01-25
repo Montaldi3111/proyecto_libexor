@@ -6,12 +6,21 @@
                 <li class="title">
                     <a href="/" style="text-decoration: none; color: white;"><p>Libexor</p></a>
                 </li>
-                <li><a href="/login-register" style="text-decoration: none; color: white;"><p>
-                    Ingresar
-                </p></a></li>
-                <li><a href="/login-register" style="text-decoration: none; color: white;">
-                    <p>Registrarse</p>
-                </a></li>
+                <% if (locals.isLogged) { %>
+                    <li>
+                        <p>Bienvenido <%=locals.user.username %></p>
+                    </li>
+                    <li>
+                        <a href="/profile" style="text-decoration: none; color:white;"><p>Mi Perfil</p></a>
+                    </li>
+                <% } else {%>
+                    <li><a href="/login-register" style="text-decoration: none; color: white;"><p>
+                        Ingresar
+                    </p></a></li>
+                    <li><a href="/login-register" style="text-decoration: none; color: white;">
+                        <p>Registrarse</p>
+                    </a></li>
+                    <% } %>
                 <li>
                     <p>
                     <div class="search-bar">

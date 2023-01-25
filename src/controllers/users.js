@@ -11,45 +11,54 @@ const controller = {
         })
     },
     profile: (req,res) => {
-        res.render("users/profile",{
-            title: ["Perfil"],
-            styles: ["/profile"]
+        db.Type.findAll().then(types => {
+            res.render("users/profile",{
+                title: ["Perfil"],
+                styles: ["/profile"],
+                types,
+                user: req.session.user
+            })
         })
     },
     // CRUD
     create: (req,res) => {
-        db.User.findOne({
-            where: {
-                email: String(req.body.email)
-            }
-        }).then(userFound => {
-            if(!userFound){
-                db.User.create({
-                    username: req.body.username,
-                    email: String(req.body.email),
-                    // avatar: req.files[0].filename,
-                    password: bcrypt.hashSync(req.body.password, 10),
-                    isAdmin: String(req.body.email).includes("@lebixor.com"),
-                    isActive: 1
-            }).then(() =>{
-                res.render("users/profile",{
-                    styles: ["/profile"],
-                    title: ["Perfil"]
-                    
-                });
-            })
-        } else {
-            res.render("users/login-register",{
-                styles: ["/login-register"],
-                title: ["Ingresar"],
-                error: {
-                    email: {
-                        msg: "Ese email ya se encuentra registrado"
-                    }
+        db.Type.findAll().then(types => {
+            db.User.findOne({
+                where: {
+                    email: String(req.body.email)
                 }
-            });
-        }
+            }).then(userFound => {
+                if(!userFound){
+                    db.User.create({
+                        username: req.body.username,
+                        email: String(req.body.email),
+                        avatar: req.files[0].filename,
+                        password: bcrypt.hashSync(req.body.password, 10),
+                        isAdmin: String(req.body.email).includes("@lebixor.com"),
+                        isActive: 1
+                }).then(() =>{
+                    res.render("users/login-register",{
+                        styles: ["/login-register"],
+                        title: ["Ingresar"],
+                        types,
+                        success: {
+                            msg: "Usuario creado, ahora debes logearte"
+                        }
+                    })
+                })
+            } else {
+                res.render("users/login-register",{
+                    styles: ["/login-register"],
+                    title: ["Ingresar"],
+                    types,
+                    error: {
+                            msg: "Ese email ya se encuentra registrado"
+                    }
+                });
+            }
+            })
         })
+        
     },
     access: (req,res) => {
         db.Type.findAll().then(types => {
@@ -57,41 +66,81 @@ const controller = {
                 where: {
                     username: req.body.username
                 }
-            }).then(user => {
-                if(!user){
+            }).then(userFound => {
+                if(!userFound){
                     res.render("users/login-register",{
                         styles: ["/login-register"],
                         title: ["Ingresar"],
+                        types,
                         error: {
                             username: {
-                                msg: "No se encuentra un usuario con ese nombre"
+                                msg: "Usuario no encontrado"
                             }
-                        },
-                        types
-                    });
-                } else if(!bcrypt.compareSync(req.body.password,user.password)){
-                    res.render("users/login-register",{
-                        styles: ["/login-register"],
-                        title: ["Ingresar"],
-                        error: {
-                            password: {
-                                msg: "Contraseña Incorrecta"
-                            }
-                        },
-                        types
-                    });
-                }
-                    else {
-                     if(req.body.remember){
-                        res.cookie('username', req.body.username, {maxAge: 1000*60*60*24});
                         }
-                    req.session.user = user;
-                    res.render("users/profile", {
-                        styles: ["/profile"],
-                        title: ["Perfil"],
-                    });
+                    })
+                } else {
+                    if(!bcrypt.compareSync(req.body.password, userFound.password)){ // Si la contraseña es incorrecta
+                        res.render("users/login-register",{
+                            styles: ["/login-register"],
+                            title: ["Ingresar"],
+                            types,
+                            error: {
+                                password: {
+                                    msg: "Contraseña Incorrecta"
+                                }
+                            }
+                        })
+                    } else {
+                        let userLogged = userFound;
+                        userLogged.password = '';
+                        if(req.body.remember){
+                            res.cookie("username", req.body.username ,{maxAge: 1000*60*60*24})
+                        }
+                        req.session.user = userLogged;
+                        res.redirect("/profile")
+                    }
                 }
             })
+            // db.User.findOne({
+            //     where: {
+            //         username: req.body.username
+            //     }
+            // }).then(user => {
+            //     if(!user){
+            //         res.render("users/login-register",{
+            //             styles: ["/login-register"],
+            //             title: ["Ingresar"],
+            //             error: {
+            //                 username: {
+            //                     msg: "No se encuentra un usuario con ese nombre"
+            //                 }
+            //             },
+            //             types
+            //         });
+            //     } else if(!bcrypt.compareSync(req.body.password,user.password)){
+            //         res.render("users/login-register",{
+            //             styles: ["/login-register"],
+            //             title: ["Ingresar"],
+            //             error: {
+            //                 password: {
+            //                     msg: "Contraseña Incorrecta"
+            //                 }
+            //             },
+            //             types
+            //         });
+            //     }
+            //         else {
+            //          if(req.body.remember){
+            //             res.cookie('username', req.body.username, {maxAge: 1000*60*60*24});
+            //             }
+            //         req.session.user = user;
+            //         res.send(req.session.user)
+            //         res.render("users/profile", {
+            //             styles: ["/profile"],
+            //             title: ["Perfil"],
+            //         });
+            //     }
+            // })
         })
     },
 
@@ -116,6 +165,11 @@ const controller = {
         }).then(() => {
             res.redirect("/")
         })
+    },
+    logout: (req,res) => {
+        res.clearCookie("username")
+        req.session.destroy(),
+        res.redirect("/");
     }
 
 }
