@@ -101,46 +101,6 @@ const controller = {
                     }
                 }
             })
-            // db.User.findOne({
-            //     where: {
-            //         username: req.body.username
-            //     }
-            // }).then(user => {
-            //     if(!user){
-            //         res.render("users/login-register",{
-            //             styles: ["/login-register"],
-            //             title: ["Ingresar"],
-            //             error: {
-            //                 username: {
-            //                     msg: "No se encuentra un usuario con ese nombre"
-            //                 }
-            //             },
-            //             types
-            //         });
-            //     } else if(!bcrypt.compareSync(req.body.password,user.password)){
-            //         res.render("users/login-register",{
-            //             styles: ["/login-register"],
-            //             title: ["Ingresar"],
-            //             error: {
-            //                 password: {
-            //                     msg: "Contraseña Incorrecta"
-            //                 }
-            //             },
-            //             types
-            //         });
-            //     }
-            //         else {
-            //          if(req.body.remember){
-            //             res.cookie('username', req.body.username, {maxAge: 1000*60*60*24});
-            //             }
-            //         req.session.user = user;
-            //         res.send(req.session.user)
-            //         res.render("users/profile", {
-            //             styles: ["/profile"],
-            //             title: ["Perfil"],
-            //         });
-            //     }
-            // })
         })
     },
 
@@ -170,6 +130,23 @@ const controller = {
         res.clearCookie("username")
         req.session.destroy(),
         res.redirect("/");
+    },
+    list: (req,res) => {
+        db.User.findAll().then(users =>{
+            if(users){
+                res.render("users/list",{
+                    styles: ["/userList"],
+                    title: ["Lista Usuarios"],
+                    users
+                })
+            } else {
+                res.render("users/list",{
+                    styles: ["/userList"],
+                    title: ["Lista Usuarios"],
+                    msg: "No hay usuarios"
+            })
+            }
+        }).catch(err => res.send(err))
     }
 
 }

@@ -1,0 +1,27 @@
+<%-include("../partials/head.ejs") %>
+<body>
+<main>
+    <% if (!products) { %>
+        <h1>No hay productos</h1>
+    <% } else { %>
+        <% for( i = 0; i < products.length; i++ ) { %>
+                <form action="/delete/<%=products[i].id %>" method="post">
+                    <div>
+                        <img src="/images/<%=products[i].image %>" alt="">
+                        <ul>
+                            <li><%=products[i].name %></li>
+                            <li><%=products[i].price %></li>
+                            <% if (products[i].quantity >0) {%>
+                                <li><i class="fa-solid fa-boxes-stacked"></i><%=products[i].quantity %></li>
+                            <% } else { %>
+                                <li style="color:red;">No hay existencias </li>
+                                <% } %>
+                                    <li><button type="submit"><i class="fa-solid fa-xmark"></i></button></li>
+                        </ul>
+                    </div>
+                </form>
+        <% } %>
+        <% } %>
+</main>    
+</body>
+</html>

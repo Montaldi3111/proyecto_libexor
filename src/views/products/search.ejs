@@ -1,0 +1,38 @@
+<%-include("../partials/head.ejs") %>
+<%-include("../partials/header.ejs") %>
+<main>
+    <% if (results.length > 0) { %>
+        <h1>Resultados: </h1>
+    <section class="results">
+        <% for( i = 0; i < results.length; i++ ) { %>
+            <% if (results[i].quantity>0) { %>
+                <a href="/product/<%=results[i].id %>" style="text-decoration: none; color:black;">
+                <div class="product">
+                    <img src="/images/<%=results[i].image %>" alt="">
+                    <ul>
+                        <li><%=results[i].name %></li>
+                        <li><%=results[i].price %>$</li>
+                         <li style="color:green">Disponible</li>
+                    </ul>
+                </div>
+            </a>
+            <% } else { %>
+                <div class="product">
+                    <img src="/images/<%=results[i].image %>"alt="">
+                    <ul>
+                        <li><%=results[i].name %></li>
+                        <li><%=results[i].price %>$</li>
+                        <li style="color:red;">No Disponible</li>
+                    </ul>
+                </div>
+        <% } %>
+        <% } %>
+        <% }  else {%>
+            <section class="not-found">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            <h1 class="not-found-msg">No hubo resultados para esa busqueda</h1>
+        </section>
+            <% } %>
+        </section>
+</main>
+<%-include("../partials/footer.ejs") %>

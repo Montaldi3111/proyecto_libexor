@@ -22,11 +22,12 @@ const upload = multer({storage});
 
 router.get("/login-register", [userLogged] ,userController.loginRegister);
 router.get("/profile", [auth] ,userController.profile);
+router.get("/users/list", userController.list);
 
 router.post("/access", userController.access);
 router.post("/create", [upload.any()] ,userController.create);
 router.post("/logout", userController.logout)
 // router.post("/edit", userController.edit);
-// router.post("/delete", userController.delete);
+router.post("/delete/:id", userController.delete);
 
 module.exports = router;

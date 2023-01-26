@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+    font-size: 18px;
+    font-family: 'Inter Tight',sans-serif;
+}
+
+h1{
+    text-align: center;
+    margin: auto;
+}
+
+main{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+main form{
+    background-color: white;
+    text-align: center;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 8px;
+    box-shadow: 0 0 30px #404040;
+}
+
+main form img {
+    width: 8em;
+    height: 8em;
+}
+
+main form ul{
+    list-style: none;
+    text-align: left;
+}
+
+main form button {
+    margin: auto;
+    border: none;
+    background-color: white;
+}
+
+main form button i{
+    font-size: 22px;
+    color: red;
+}
+
+/* Transition */
+
+main form:hover {
+    box-shadow: 0  0 50px #0D0D0D;
+}
+
+main form button i:hover{
+    color: rgba(255, 0, 0, 0.418);
+}

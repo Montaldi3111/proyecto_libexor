@@ -1,0 +1,32 @@
+<%-include("../partials/head.ejs") %>
+<body>
+<main>
+    <% if (!users) { %>
+        <h1>No hay usuarios</h1>
+    <% } else { %>
+        <% for( i = 0; i < users.length; i++ ) { %>
+                <form action="/delete/<%=users[i].id %>" method="post">
+                    <div>
+                        <img src="/images/uploads/<%=users[i].avatar %>" alt="">
+                        <ul>
+                            <li><%=users[i].username %></li>
+                            <li><%=users[i].email %></li>
+                            <% if (users[i].isAdmin == 1) {%>
+                                <li><i class="fa-solid fa-user-shield"></i>Admin</li>
+                            <% } else { %>
+                                <li><i class="fa-solid fa-user"></i>Usuario </li>
+                                <% } %>
+                                <% if (users[i].isActive == 1) {%>
+                                    <li style="color:green;">Activo</li>
+                                <% } else { %>
+                                    <li style="color:red;">Inactivo </li>
+                                    <% } %>
+                                    <li><button type="submit"><i class="fa-solid fa-xmark"></i></button></li>
+                        </ul>
+                    </div>
+                </form>
+        <% } %>
+        <% } %>
+</main>    
+</body>
+</html>

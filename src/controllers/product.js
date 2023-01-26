@@ -1,5 +1,5 @@
 const db = require("../database/models");
-
+const { Op } = require("sequelize");
 const controller = {
     detail: (req,res) => {
         db.Type.findAll().then(types => {
@@ -53,6 +53,26 @@ const controller = {
               })
         })
         
+    },
+
+    search: (req,res) => {
+        let productToSearch = String(req.body.search);
+        if(productToSearch != ""){
+        db.Product.findAll({where:{name:{[Op.like]: '%'+productToSearch+'%'}}})
+        .then(results => {
+            db.Type.findAll()
+            .then(types => {
+                res.render("products/search",{
+                    styles: ["/search"],
+                    title: ["Resultados"],
+                    types,
+                    results
+                })
+            })
+        })
+        } else {
+            res.redirect("/");
+        }
     },
 
     edit: (req,res) => {
@@ -141,6 +161,23 @@ const controller = {
         }).then(() =>{
             res.redirect("/");
         })
+    },
+    list: (req,res) => {
+        db.Product.findAll().then(products =>{
+            if(products){
+                res.render("products/list",{
+                    styles: ["/productList"],
+                    title: ["Lista Productos"],
+                    products
+                })
+            }else {
+                res.render("products/list",{
+                    styles: ["/productList"],
+                    title: ["Lista Productos"],
+                    msg: 'No hay productos'
+                })
+            }
+        }).catch(err => res.send(err))
     }
 }
 

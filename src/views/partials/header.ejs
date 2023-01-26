@@ -7,13 +7,29 @@
                     <a href="/" style="text-decoration: none; color: white;"><p>Libexor</p></a>
                 </li>
                 <% if (locals.isLogged) { %>
+                    <% if(locals.user.isAdmin == 1) {%>
+
+                        <li>
+                            <a href="/users/list" style="text-decoration: none; color: white;">Lista de usuarios</a>
+                        </li>
+    
+                        <li>
+                            <a href="/product/list" style="text-decoration: none; color: white;">Lista de productos</a>
+                        </li>
+    
+                        <li>
+                            <a href="/profile" style="text-decoration: none; color:white;"><p>Mi Perfil</p></a>
+                        </li>
+    
+                        <% } else { %>
                     <li>
                         <p>Bienvenido <%=locals.user.username %></p>
                     </li>
                     <li>
                         <a href="/profile" style="text-decoration: none; color:white;"><p>Mi Perfil</p></a>
                     </li>
-                <% } else {%>
+                <% } %>
+                <% } else { %>
                     <li><a href="/login-register" style="text-decoration: none; color: white;"><p>
                         Ingresar
                     </p></a></li>
@@ -23,12 +39,16 @@
                     <% } %>
                 <li>
                     <p>
+                        <form action="/search" method="post">
                     <div class="search-bar">
-                    <input type="search" class="search-bar-imput" placeholder="Busqueda" />
+                    <input type="search" class="search-bar-imput" placeholder="Busqueda" name="search"/>
                     <span class="input-group-text border-0" id="search-addon">
+                        <button type="submit">
                       <i class="fas fa-search"></i>
+                    </button>
                     </span>
                   </div>
+                </form>
                 </p>
                 </li>
                 <li><a href="/cart" style="text-decoration: none; color: white;">
