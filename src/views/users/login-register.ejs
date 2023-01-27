@@ -32,33 +32,41 @@
         <% }  else if(locals.error) {%>
             <p style="color: red;"><%=locals.error.msg %></p>
             <% } %>
-        <form action="/create" method="post" class="register-form" enctype="multipart/form-data">
+        <form action="/create" method="post" class="register-form" id="register" enctype="multipart/form-data">
             <fieldset>
                 <label for="username">Nombre de usuario</label><br>
-                <input type="text" name="username">
+                <input type="text" name="username" class="username">
+                <p class="error-msg"></p>
             </fieldset>
             <fieldset>
                 <label for="email">Email</label><br>
-                <input type="email" name="email">
+                <input type="email" name="email" class="email">
+                <p class="error-msg"></p>
             </fieldset>
             <fieldset>
                 <label for="confirm-email">Confirmar email</label><br>
-                <input type="email" name="confirm-email">
+                <input type="email" name="confirm-email" class="repeat-email">
+                <p class="error-msg"></p>
             </fieldset>
             <fieldset>
                 <label for="file">Avatar</label><br>
-                <input type="file" name="file">
+                <input type="file" name="file" class="file" style="border:none;">
+                <p class="error-msg"></p>
             </fieldset>
             <fieldset>
                 <label for="password">Contraseña</label><br>
-                <input type="password" name="password">
+                <input type="password" name="password" class="password">
+                <p class="error-msg"></p>
             </fieldset>
             <fieldset>
                 <label for="repeat-password">Repetir contraseña</label><br>
-                <input type="password" name="repeat-password">
+                <input type="password" name="repeat-password" class="repeat-password">
+                <p class="error-msg"></p>
             </fieldset>
             <button type="submit">Registrarse</button>
         </form>
     </section>
 </main>
+<script src="/scripts/login-register.js">
+</script>
 <%- include("../partials/footer.ejs") %>

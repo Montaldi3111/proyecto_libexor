@@ -1,52 +1,61 @@
 <%-include("../partials/head.ejs") %>
 <main>
-    <form action="/product/create" method="post" enctype="multipart/form-data">
+    <form action="/product/create" class="create" method="post" enctype="multipart/form-data">
         <fieldset>
             <label for="name">Nombre: </label>
-            <input type="text" name="name">
+            <input type="text" name="name" class="name">
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="image">Imagen: </label>
             <input type="file" name="image" style="border: none;">
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="price">Precio: </label>
-            <input type="number" name="price" min="1">
+            <input type="number" name="price" min="1" class="price">
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="description">Descripcion:</label><br>
-            <textarea name="description" cols="30" rows="15" style="min-width: 300px;min-height: 100px;max-width: 600px; max-height: 200px;border-radius:0px;"></textarea>
+            <textarea name="description" class="description" cols="30" rows="15" style="min-width: 300px;min-height: 100px;max-width: 600px; max-height: 200px;border-radius:0px;"></textarea>
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="quantity">Cantidad: </label>
-            <input type="number" name="quantity" min="1">
+            <input type="number" name="quantity" min="1" class="quantity">
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="color">Color: </label>
-            <select name="color" >
+            <select name="color" class="color" >
                 <% for(i=0;i<colors.length;i++) {%>
                         <option value="<%=colors[i].id %>"><%=colors[i].color %></option>
                     <% } %>
             </select>
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="type">Tipo de producto: </label>
-            <select name="type" >
+            <select name="type" class="type">
                 <% for(i=0;i<types.length;i++) {%>
                         <option value="<%=types[i].id %>"><%=types[i].type %></option>
                     <% } %>
             </select>
+            <p class="error-msg"></p>
         </fieldset>
         <fieldset>
             <label for="company">Marca: </label>
-            <select name="company">
+            <select name="company" class="brand">
                 <% for(j=0;j<companys.length;j++) {%>
                         <option value="<%=companys[j].id %>"><%=companys[j].company %></option>
                     <% } %>
                 </select>
+                <p class="error-msg"></p>
         </fieldset>
         <button type="submit">Crear Producto</button>
     </form>
+    <script src="/scripts/create.js"></script>
 </main>
 </body>
 </html>

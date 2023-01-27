@@ -45,6 +45,17 @@ header .nav-bar .head ul input{
     padding: 6px;
 }
 
+header .nav-bar .search-bar i {
+    color: white;
+    font-size: 16px;
+}
+
+
+header .nav-bar .search-bar button {
+    border: none;
+    background-color: #0D0D0D;
+}
+
 header .nav-bar .categories{
     background-color: #8AA6BF;
 }
