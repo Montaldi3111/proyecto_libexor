@@ -5,8 +5,11 @@ const app = express();
 const path = require("path");
 const userRoutes = require("./routes/user");
 const mainRoutes = require("./routes/main");
+const productApiRoutes = require("./routes/api/product")
+const userApiRoutes = require("./routes/api/user")
 const productRoutes = require("./routes/product");
 const userIsLogged= require("./middlewares/userMiddleware");
+const cors = require("cors")
 
 // Set settings
  app.set("port", process.env.PORT || 3000);
@@ -24,8 +27,12 @@ app.use(express.static(path.resolve(__dirname, "../public/images/uploads")));
 app.use(session({secret: "secret", saveUninitialized: true, resave: false}));
 app.use(cookie());
 app.use(userIsLogged);
+app.use(cors())
+
 // Routes
 
 app.use(mainRoutes);
 app.use(userRoutes);
 app.use(productRoutes);
+app.use("/api", userApiRoutes);
+app.use("/api", productApiRoutes);
