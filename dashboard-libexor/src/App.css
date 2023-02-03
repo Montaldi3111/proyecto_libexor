@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Inter Tight', sans-serif;
+  background-color: #8AA6BF;
+  text-align: center;
+}
+
+.logo {
+  width: 8em;
+  height: 8em;
+}
+
+section {
+  border: 1px solid black;
+  margin: auto;
+  width: max-content;
+  background-color: #f2f2f2;
+}
+section .active {
+  display: show;
+}
+section .hidden {
+  display:none;
+}
+section button{
+  border:none;
+  border-bottom: 1px solid black;
+  background-color: #f2f2f2;
+  width: 320px;
+  padding: 8px;
+  font-size: 18px;
+}
+
+section .product {
+  border-right: 1px solid black;
+}
+section .user{
+  border-left: 1px solid black;
+}
+
+section .products div, section .users div{
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+section ul {
+  list-style: none;
+  text-align: center;
+}
+
+section .next-button{
+  border: none;
+  margin: 20px 0 0 0;
+  width: 640px;
+}
+
+section button:hover{
+  background-color: #404040;
+  color:white;
+}

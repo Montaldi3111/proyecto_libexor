@@ -27,8 +27,8 @@ const controller = {
                     id: product.id,
                     name: product.name,
                     description: product.description,
-                    color: product.color,
-                    type: product.type,
+                    color_id: product.color,
+                    type_id: product.type,
                     company_id: product.company,
                     detailURL: "https://localhost:3000/api/products/" + product.id
                 })
@@ -48,6 +48,15 @@ const controller = {
     },
     last: (req,res) => {
         db.Product.findOne({
+            include: [{
+                association: "color"
+            },
+            {
+                association:"type"
+            },
+            {
+                association: "company"
+            }],
             order: [["id", "DESC"]]
         })
         .then((product) => {
@@ -57,8 +66,8 @@ const controller = {
                     name: product.name,
                     image: "https://localhost:3000/api/images/" + product.image,
                     description: product.description,
-                    color: product.color,
-                    type: product.type,
+                    color_id: product.color,
+                    type_id: product.type,
                     company_id: product.company,
                 },
                 status: 200
@@ -81,9 +90,9 @@ const controller = {
                     id: product.id,
                     name: product.name,
                     image: "https://localhost:3000/api/images/" + product.image,
-                    color: product.color,
-                    type: product.type,
-                    company: product.company,
+                    color_id: product.color,
+                    type_id: product.type,
+                    company_id: product.company,
                     detailURL: "https://localhost:3000/api/products/" + product.id
                 })
             } else {

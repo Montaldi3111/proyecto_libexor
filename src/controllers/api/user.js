@@ -38,10 +38,10 @@ const controller = {
             return res.status(200).json({
                 data: {
                     id: user.id,
-                    name: user.username,
+                    username: user.username,
                     email: user.email,
                     admin: user.isAdmin,
-                    avatar: "https://localhost:3000/avatar/" + user.image,
+                    avatar: "https://localhost:3000/avatar/" + user.avatar,
                     user: "https://localhsot:3000/api/users/" + user.id
                 },
                 status: 200

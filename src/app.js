@@ -30,9 +30,8 @@ app.use(userIsLogged);
 app.use(cors())
 
 // Routes
-
+app.use("/api", userApiRoutes);
+app.use("/api", productApiRoutes);
 app.use(mainRoutes);
 app.use(userRoutes);
 app.use(productRoutes);
-app.use("/api", userApiRoutes);
-app.use("/api", productApiRoutes);
